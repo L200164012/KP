@@ -68,17 +68,13 @@ Highcharts.chart('container', {
             name: "Percentage",
             colorByPoint: true,
             data: [
-            {% for i in test: %}
+            {% for i in test %}
                 {
                     name: "2011",
                     y: 1,
                     drilldown: "Chrome"
                 },
-                {
-                    name: "2012",
-                    y: {{ test }},
-                    drilldown: "Firefox"
-                },
+            {% endfor %}
                 {
                     name: "Other",
                     y: 2,
