@@ -44,8 +44,8 @@ class AlumniMengisiDanWaktuTungguDapatKerja(models.Model):
 
 
 class BidangPekerjaan(models.Model):
-    rid = models.IntegerField()
-    Pek_id = models.CharField(max_length=3)
+    rid = models.IntegerField(primary_key=True)
+    #Pek_id = models.CharField(max_length=3)
     pilihan = models.CharField(max_length=255)
 
     class Meta:
@@ -475,7 +475,7 @@ class MasukanAtauSaranUntukProgramStudi(models.Model):
 
 
 class MencariPekerjaan(models.Model):
-    rid = models.IntegerField()
+    rid = models.IntegerField(primary_key=True)
     nim = models.CharField(max_length=10)
     f3 = models.IntegerField()
     f401 = models.IntegerField()
@@ -504,7 +504,7 @@ class MencariPekerjaan(models.Model):
 
 
 class MencariPekerjaanDanMendapatkanPekerjaanPertama(models.Model):
-    rid = models.IntegerField(blank=True, null=True)
+    rid = models.IntegerField(primary_key=True)
     nim = models.CharField(max_length=10, blank=True, null=True)
     f3 = models.IntegerField(blank=True, null=True)
     f401 = models.IntegerField(blank=True, null=True)
@@ -533,7 +533,7 @@ class MencariPekerjaanDanMendapatkanPekerjaanPertama(models.Model):
 
 
 class PekerjaanSekarang(models.Model):
-    rid = models.IntegerField()
+    rid = models.IntegerField(primary_key=True)
     nim = models.CharField(max_length=10)
     f111 = models.IntegerField()
     f112 = models.CharField(max_length=255)

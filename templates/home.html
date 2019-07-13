@@ -15,69 +15,85 @@
 		</style>
 </head>
     <body>
-    <script src="{% static 'Highcharts-7.1.2/code/highcharts.js' %}"></script>
-    <script src="{% static 'Highcharts-7.1.2/code/modules/series-label.js' %}"></script>
-    <script src="{% static 'Highcharts-7.1.2/code/modules/exporting.js' %}"></script>
-    <script src="{% static 'Highcharts-7.1.2/code/modules/export-data.js' %}"></script>
+<script src="{% static 'Highcharts-7.1.2/code/highcharts.js' %}"></script>
+<script src="{% static 'Highcharts-7.1.2/code/modules/data.js' %}"></script>
+<script src="{% static 'Highcharts-7.1.2/code/modules/drilldown.js' %}"></script>
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
 
-<div id="container"></div>
 		<script type="text/javascript">
+
 Highcharts.chart('container', {
-
+    chart: {
+        type: 'column'
+    },
     title: {
-        text: 'Solar Employment Growth by Sector, 2010-2016'
+        text: 'Grafik Kelulusan Mahasiswa Tiap Tahun'
     },
-
     subtitle: {
-        text: 'Source: thesolarfoundation.com'
+        text: 'Click the columns to view versions. Source: <a href="http://statcounter.com" target="_blank">statcounter.com</a>'
     },
-
+    xAxis: {
+        type: 'category'
+    },
     yAxis: {
         title: {
-            text: 'Number of Employees'
+            text: 'Count Mahasiswa Data'
         }
+
     },
     legend: {
-        layout: 'vertical',
-        align: 'right',
-        verticalAlign: 'middle'
+        enabled: false
     },
-
     plotOptions: {
         series: {
-            label: {
-                connectorAllowed: false
-            },
-            pointStart: 2010
+            borderWidth: 0,
+            dataLabels: {
+                enabled: true,
+                format: '{point.y:f} Mahasiswa'
+            }
         }
     },
 
-    series: [{
-        name: 'Mahasiswa',
-        data: [{{ test }}]
-    }, {
-        name: 'Manufacturing',
-        data: []
-    }],
+    tooltip: {
+        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:f}</b> of total<br/>'
+    },
 
-    responsive: {
-        rules: [{
-            condition: {
-                maxWidth: 500
+    series: [
+        {
+            name: "Jumlah Mahasiswa",
+            colorByPoint: true,
+            data: [
+                {% for i in th_lulus %}
+                {
+                    name: "{{ i.0 }}",
+                    y: {{ i.1 }},
+                    drilldown: "{{i.0}}"
+                },
+                {% endfor %}
+            ]
+        }
+    ],
+    drilldown: {
+        series: [
+            {% for i in th_lulus %}
+            {
+                name: "jumlah Mahasiswa",
+                id: "{{i.0}}",
+                data: [
+                    [
+                        "{{i.0}}",
+                        {{i.1}}
+                    ]
+
+                ]
             },
-            chartOptions: {
-                legend: {
-                    layout: 'horizontal',
-                    align: 'center',
-                    verticalAlign: 'bottom'
-                }
-            }
-        }]
+            {% endfor %}
+        ]
     }
-
 });
 		</script>
-<!--	Waktu alumni mencari pekerjaanzzzzzzzzzzzzzzzzzzzzzzzzzzzz -->
     </body>
 </html>

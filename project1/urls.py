@@ -32,4 +32,5 @@ urlpatterns = [
     path('graph9', view.view_graph9, name='graph9'),
     path('graph10', view.view_graph10, name='graph10'),
     path('graph11', view.view_graph11, name='graph11'),
+    path('fill/<str:filter>/<int:graph>', view.fill, name='fill'),
 ]
