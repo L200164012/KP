@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="40fc782a-5604-40c8-a7d4-b45c48a4f743" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/c0tracerstudy/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/c0tracerstudy/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/Highcharts-7.1.2.zip" beforeDir="false" />
+    <list default="true" id="40fc782a-5604-40c8-a7d4-b45c48a4f743" name="Default Changelist" comment="Merge branch 'cahyo' of github.com:L200164012/KP&#10;&#10;# Conflicts:&#10;#&#9;templates/graph10.html&#10;#&#9;templates/graph2.html&#10;#&#9;templates/graph4.html&#10;#&#9;templates/graph6.html&#10;#&#9;templates/graph8.html">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,20 +13,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/graph1.html">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/c0tracerstudy/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+            <state relative-caret-position="385">
+              <caret line="569" column="4" selection-start-line="569" selection-start-column="4" selection-end-line="569" selection-end-column="12" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/c0tracerstudy/models.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="9673">
-              <caret line="569" column="4" selection-start-line="569" selection-start-column="4" selection-end-line="569" selection-end-column="12" />
+            <state relative-caret-position="17">
+              <caret line="1" column="22" selection-start-line="1" selection-start-column="22" selection-end-line="1" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -34,42 +34,6 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/c0tracerstudy/views.py">
           <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/graph5.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="45" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/graph9.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5576">
-              <caret line="328" column="7" selection-start-line="328" selection-start-column="7" selection-end-line="328" selection-end-column="7" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/graph11.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5576">
-              <caret line="328" column="7" selection-start-line="328" selection-start-column="7" selection-end-line="328" selection-end-column="7" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
         </entry>
       </file>
     </leaf>
@@ -127,6 +91,7 @@
         <option value="$PROJECT_DIR$/templates/graph9.html" />
         <option value="$PROJECT_DIR$/templates/graph1.html" />
         <option value="$PROJECT_DIR$/c0tracerstudy/views.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -220,9 +185,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-182" y="142" width="1346" height="707" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24330357" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -233,8 +199,8 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32872504" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.49923548" visible="true" weight="0.2839721" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50076455" side_tool="true" visible="true" weight="0.2839721" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.4985119" visible="true" weight="0.2826421" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5014881" side_tool="true" visible="true" weight="0.2826421" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.12903225" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -262,7 +228,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Odd Graph finished,...&#10;adding some static script and stylesheet&#10;try 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Odd Graph finished,...&#10;adding some static script and stylesheet&#10;try 1" />
+    <MESSAGE value="Merge branch 'cahyo' of github.com:L200164012/KP&#10;&#10;# Conflicts:&#10;#&#9;templates/graph10.html&#10;#&#9;templates/graph2.html&#10;#&#9;templates/graph4.html&#10;#&#9;templates/graph6.html&#10;#&#9;templates/graph8.html" />
+    <MESSAGE value="fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/db.sqlite3" />
@@ -310,7 +278,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/c0tracerstudy/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9673">
+        <state relative-caret-position="385">
           <caret line="569" column="4" selection-start-line="569" selection-start-column="4" selection-end-line="569" selection-end-column="12" />
         </state>
       </provider>
@@ -405,6 +373,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/c0tracerstudy/views.py">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="22" selection-start-line="1" selection-start-column="22" selection-end-line="1" selection-end-column="22" />
+        </state>
+      </provider>
     </entry>
   </component>
 </project>
