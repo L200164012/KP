@@ -8,6 +8,7 @@
 from django.db import models
 
 
+
 class Admin(models.Model):
     rid = models.IntegerField(primary_key=True)
     nama = models.CharField(max_length=100)

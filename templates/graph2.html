@@ -1,0 +1,439 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cara Alumni Mencari Pekerjaan</title>
+
+		<style type="text/css">
+
+		</style>
+	</head>
+	<body>
+
+             <!-- Script Highcharts-->
+             <script src="{% static 'Highcharts-7.1.2/code/highcharts.js' %}"></script>
+             <script src="{% static 'Highcharts-7.1.2/code/modules/exporting.js' %}"></script>
+             <script src="{% static 'Highcharts-7.1.2/code/modules/export-data.js' %}"></script>
+             <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+             <!-- CSS Datatables-->
+             <link rel="stylesheet" href="{% static 'DataTables-1.10.18/datatables.min.css' %}">
+             <!-- Script Dan CSS Modals -->
+             <link rel="stylesheet"
+                   href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+                   integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+                   crossorigin="anonymous">
+             <script
+                     src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                     crossorigin="anonymous"></script>
+             <script
+                     src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+                     integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+                     crossorigin="anonymous"></script>
+             <!-- Script Datatables-->
+             <script src="{% static 'DataTables-1.10.18/datatables.min.js' %}"></script>
+             
+             <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+             
+             <!-- modals dan datatables-->
+             
+             <!-- Modal Trigger Button -->
+             <button type="button" class="btn btn-success" data-toggle="modal"
+                     data-target="#practiseModal">
+                 Semua Peserta
+             </button>
+             <!-- Modal Body -->
+             <div class="modal fade" id="practiseModal" tabindex="-1" role="dialog"
+                  aria-labelledby="practiseModalLabel" aria-hidden="true">
+                 <div class="modal-dialog modal-xl" role="document">
+                     <div class="modal-content">
+                         <div class="modal-header">
+                             <h5 class="modal-title" id="practiseModalLabel">
+                                 Peserta dan Jawabannya</h5>
+                             <button type="button" class="close"
+                                     data-dismiss="modal" aria-label="Close">
+                                 <span aria-hidden="true">×</span>
+                             </button>
+                         </div>
+                         <div class="modal-body">
+                             <table id="table_id" class="display" width="100%">
+                                 <thead>
+                                 <tr>
+                                     <th>Nim</th>
+                                     <th>Jawaban</th>
+                                 </tr>
+                                 </thead>
+                                 <tbody>
+                                 {% for i in data %}
+                                 <tr>
+                                     <td>{{ i.nim }}</td>
+                                     <td>{% if i.f401 == 1 %}
+                                            Melalui Iklan Koran/Majalah,Brosur
+                                         {% elif i.f402 == 1 %}
+                                            Melamar ke perusahaan tanpa mengetahui lowongan yang ada
+                                         {% elif i.f403 == 1 %}
+                                            Pergi ke bursa/pameran kerja
+                                         {% elif i.f404 == 1 %}
+                                            Mencari lewat internet/iklan online/milis
+                                         {% elif i.f405 == 1 %}
+                                            Dihubungi oleh perusahaan
+                                         {% elif i.f406 == 1 %}
+                                            Menghubungi Kemenakertrans
+                                         {% elif i.f407 == 1 %}
+                                            Menghubungi agen tenaga kerja komersial/swasta
+                                         {% elif i.f408 == 1 %}
+                                            Memeroleh informasi dari pusat/kantor pengembangan karir fakultas/universitas
+                                         {% elif i.f409 == 1 %}
+                                            Menghubungi kantor kemahasiswaan/hubungan alumni
+                                         {% elif i.f410 == 1 %}
+                                            Membangun jejaring (network) sejak masih kuliah
+                                         {% elif i.f411 == 1 %}
+                                            Melalui relasi (misalnya dosen, orang tua, saudara, teman, dll.)
+                                         {% elif i.f412 == 1 %}
+                                            Membangun bisnis sendiri
+                                         {% elif i.f413 == 1 %}
+                                            Melalui penempatan kerja atau magang
+                                         {% elif i.f414 == 1 %}
+                                            Bekerja di tempat yang sama dengan tempat kerja semasa kuliah
+                                         {% elif i.f415 == 1 %}
+                                            Lainnya
+                                         {% else %}
+                                            Tidak Menjawab
+                                         {% endif %}
+                                 </tr>
+                                 {% endfor %}
+                                 </tbody>
+                             </table>
+                         </div>
+
+<div id="container" style="min-width: 300px; height: 400px; margin: 0 auto"></div>
+
+
+
+		<script type="text/javascript">
+Highcharts.chart('container', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Cara Alumni Mencari Kerja'
+    },
+    subtitle: {
+        text: 'Sumber : Database Internal'
+    },
+    xAxis: {
+        type: 'category',
+        labels: {
+            rotation: -45,
+            style: {
+                fontSize: '13px',
+                fontFamily: 'Verdana, sans-serif'
+            }
+        }
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Jumlah Alumni'
+        }
+    },
+    legend: {
+        enabled: false
+    },
+    tooltip: {
+        pointFormat: 'Alumni Mencari Kerja Dengan Cara Ini: <b>{point.y:.1f}</b>'
+    },
+    series: [{
+        name: 'Population',
+        data: [
+            {
+                name:   'Melalui Iklan Koran/Majalah,Brosur', 
+                y:  {{ A }},
+                events: {
+                    click:function() {
+                        $(document).ready(function (){
+                            var table = $('#table_id').DataTable({
+                            destroy:true,
+                            search: {
+                                search: 'Melalui Iklan Koran/Majalah,Brosur'
+                                },
+                            });
+                        });
+                        $('#practiseModal').modal('show');
+                    }
+                }
+            },
+            {
+                name:   'Melamar ke perusahaan tanpa mengetahui lowongan yang ada', 
+                y:  {{ B }},
+                events: {
+                    click:function() {
+                        $(document).ready(function (){
+                            var table = $('#table_id').DataTable({
+                            destroy:true,
+                            search: {
+                                search: 'Melamar ke perusahaan tanpa mengetahui lowongan yang ada'
+                                },
+                            });
+                        });
+                        $('#practiseModal').modal('show');
+                    }
+                }
+            },
+            {
+                name:   'Pergi ke bursa/pameran kerja',
+                y:  {{ C }},
+                events: {
+                    click:function() {
+                        $(document).ready(function (){
+                            var table = $('#table_id').DataTable({
+                            destroy:true,
+                            search: {
+                                search: 'Pergi ke bursa/pameran kerja'
+                                },
+                            });
+                        });
+                        $('#practiseModal').modal('show');
+                    }
+                }
+            },
+            {
+                name:   'Mencari lewat internet/iklan online/milis',
+                y:  {{ D }},
+                events: {
+                    click:function() {
+                        $(document).ready(function (){
+                            var table = $('#table_id').DataTable({
+                            destroy:true,
+                            search: {
+                                search: 'Mencari lewat internet/iklan online/milis'
+                                },
+                            });
+                        });
+                        $('#practiseModal').modal('show');
+                    }
+                }
+            },
+            {   name:   'Dihubungi oleh perusahaan',
+                y:  {{ E }},
+                events: {
+                    click:function() {
+                        $(document).ready(function (){
+                            var table = $('#table_id').DataTable({
+                            destroy:true,
+                            search: {
+                                search: 'Dihubungi oleh perusahaan'
+                                },
+                            });
+                        });
+                        $('#practiseModal').modal('show');
+                    }
+                }
+            },
+            {   name:   'Menghubungi Kemenakertrans',
+                y:  {{ F }},
+                events: {
+                    click:function() {
+                        $(document).ready(function (){
+                            var table = $('#table_id').DataTable({
+                            destroy:true,
+                            search: {
+                                search: 'Menghubungi Kemenakertrans'
+                                },
+                            });
+                        });
+                        $('#practiseModal').modal('show');
+                    }
+                }
+            },
+            {   name:   'Menghubungi agen tenaga kerja komersial/swasta', 
+                y:  {{ G }},
+                events: {
+                    click:function() {
+                        $(document).ready(function (){
+                            var table = $('#table_id').DataTable({
+                            destroy:true,
+                            search: {
+                                search: 'Menghubungi agen tenaga kerja komersial/swasta'
+                                },
+                            });
+                        });
+                        $('#practiseModal').modal('show');
+                    }
+                }
+            },
+            {   name:   'Memeroleh informasi dari pusat/kantor pengembangan karir fakultas/universitas', 
+                y:  {{ H }},
+                events: {
+                    click:function() {
+                        $(document).ready(function (){
+                            var table = $('#table_id').DataTable({
+                            destroy:true,
+                            search: {
+                                search: 'Memeroleh informasi dari pusat/kantor pengembangan karir fakultas/universitas'
+                                },
+                            });
+                        });
+                        $('#practiseModal').modal('show');
+                    }
+                }
+            },
+            {
+                name:   'Menghubungi kantor kemahasiswaan/hubungan alumni', 
+                y:  {{ I }},
+                events: {
+                    click:function() {
+                        $(document).ready(function (){
+                            var table = $('#table_id').DataTable({
+                            destroy:true,
+                            search: {
+                                search: 'Menghubungi kantor kemahasiswaan/hubungan alumni'
+                                },
+                            });
+                        });
+                        $('#practiseModal').modal('show');
+                    }
+                }
+            },
+            {
+                name:   'Membangun jejaring (network) sejak masih kuliah', 
+                y:  {{ J }},
+                events: {
+                    click:function() {
+                        $(document).ready(function (){
+                            var table = $('#table_id').DataTable({
+                            destroy:true,
+                            search: {
+                                search: 'Membangun jejaring (network) sejak masih kuliah'
+                                },
+                            });
+                        });
+                        $('#practiseModal').modal('show');
+                    }
+                }
+            },
+            {   name:   'Melalui relasi (misalnya dosen, orang tua, saudara, teman, dll.)',
+                y:  {{ K }},
+                events: {
+                    click:function() {
+                        $(document).ready(function (){
+                            var table = $('#table_id').DataTable({
+                            destroy:true,
+                            search: {
+                                search: 'Melalui relasi (misalnya dosen, orang tua, saudara, teman, dll.)'
+                                },
+                            });
+                        });
+                        $('#practiseModal').modal('show');
+                    }
+                }
+             },
+            {
+                name:   'Membangun bisnis sendiri', 
+                y:  {{ L }},
+                events: {
+                    click:function() {
+                        $(document).ready(function (){
+                            var table = $('#table_id').DataTable({
+                            destroy:true,
+                            search: {
+                                search: 'Membangun bisnis sendiri'
+                                },
+                            });
+                        });
+                        $('#practiseModal').modal('show');
+                    }
+                }
+            },
+            {
+                name:   'Melalui penempatan kerja atau magang',
+                y:  {{ M }},
+                events: {
+                    click:function() {
+                        $(document).ready(function (){
+                            var table = $('#table_id').DataTable({
+                            destroy:true,
+                            search: {
+                                search: 'Melalui penempatan kerja atau magang'
+                                },
+                            });
+                        });
+                        $('#practiseModal').modal('show');
+                    }
+                }
+            },
+            {
+                name:   'Bekerja di tempat yang sama dengan tempat kerja semasa kuliah',
+                y:  {{ N }},
+                events: {
+                    click:function() {
+                        $(document).ready(function (){
+                            var table = $('#table_id').DataTable({
+                            destroy:true,
+                            search: {
+                                search: 'Bekerja di tempat yang sama dengan tempat kerja semasa kuliah'
+                                },
+                            });
+                        });
+                        $('#practiseModal').modal('show');
+                    }
+                }
+            },
+            {   
+                name:   'Lainnya', 
+                y:  {{ O }},
+                events: {
+                    click:function() {
+                        $(document).ready(function (){
+                            var table = $('#table_id').DataTable({
+                            destroy:true,
+                            search: {
+                                search: 'Lainnya'
+                                },
+                            });
+                        });
+                        $('#practiseModal').modal('show');
+                    }
+                }
+            },
+            {  
+                name:    'Tidak Menjawab',
+                y:  {{ P }},
+                events: {
+                    click:function() {
+                        $(document).ready(function (){
+                            var table = $('#table_id').DataTable({
+                            destroy:true,
+                            search: {
+                                search: 'Tidak Menjawab'
+                                },
+                            });
+                        });
+                        $('#practiseModal').modal('show');
+                    }
+                }
+            }
+        ],
+        dataLabels: {
+            enabled: true,
+            rotation: -90,
+            color: '#FFFFFF',
+            align: 'right',
+            format: '{point.y:.1f}', // one decimal
+            y: 10, // 10 pixels down from the top
+            style: {
+                fontSize: '13px',
+                fontFamily: 'Verdana, sans-serif'
+            }
+        }
+    }]
+});
+$('#table_id').DataTable({
+        destroy:true,
+        search:false,
+});
+        </script>
+    </body>
+</html>
