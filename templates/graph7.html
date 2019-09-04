@@ -1,10 +1,11 @@
+{% extends 'base.html' %}
 {% load static %}
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Bidang pekerjaan alumni</title>
-    <style type="text/css">
+{% block title %}
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Bidang pekerjaan alumni</title>
+	<style type="text/css">
         #container {
             min-width: 310px;
             max-width: 800px;
@@ -18,6 +19,8 @@
 	<!--Datatables css-->
 	<link rel="stylesheet" href="{% static 'DataTables-1.10.18/datatables.min.css' %}">
 </head>
+{% endblock %}
+{% block content %}
 <body>
 <script src="{% static 'Highstock-7.1.2/code/highstock.js' %}"></script>
 <script src="{% static 'Highstock-7.1.2/code/modules/exporting.js' %}"></script>
@@ -83,7 +86,7 @@ Highcharts.chart('container', {
         text: 'Bidang pekerjaan alumni'
     },
     subtitle: {
-        text: 'Source: <a href="https://en.wikipedia.org/wiki/World_population">Wikipedia.org</a>'
+        text: 'Source: <a href="" target="_blank">Internal Database</a>'
     },
     xAxis: {
         categories: [
@@ -178,5 +181,5 @@ function fill(filter,urls){
     });
 }
 		</script>
-	</body>
-</html>
+</body>
+{% endblock %}

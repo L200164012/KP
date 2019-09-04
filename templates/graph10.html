@@ -1,5 +1,6 @@
+{% extends 'base.html' %}
 {% load static %}
-<html>
+{% block title %}
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,6 +14,8 @@
         }
 		</style>
     </head>
+{% endblock %}
+{% block content %}
     <body>
 <!-- Script Highcharts-->
 <script src="{% static 'Highcharts-7.1.2/code/highcharts.js' %}"></script>
@@ -387,4 +390,4 @@ $(document).ready(function (){
 });
         </script>
 	</body>
-</html>
+{% endblock %}

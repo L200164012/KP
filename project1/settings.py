@@ -84,12 +84,12 @@ DATABASES = {
         'PASSWORD': '',
         'PORT': '3306'
 
-    # },
-    # 'c0tracerstudy':{
-    #     'NAME':'c0tracerstudy-live',
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'USER': 'root',
-    #     'PASSWORD': ''
+     },
+     'c0tracerstudy':{
+         'NAME':'c0tracerstudy-live',
+         'ENGINE': 'django.db.backends.mysql',
+         'USER': 'root',
+         'PASSWORD': ''
     }
 }
 

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import *
+from django.http import JsonResponse
 from django.db import models
 from django.db.models import *
 
@@ -16,22 +17,22 @@ def home_view(request,*args, **kwargs):
     #     i.save()
     #     print(i.rid)
 
-    profil = Profil.objects.using('c0tracerstudy').all()
-    th_lulus = []
-    jumlah = []
-    for i in profil:
-        th_lulus.append(i.th_lulus)
-    th_lulus = list(dict.fromkeys(th_lulus))
-    th_lulus.sort()
-    for o in th_lulus:
-        x = 0
-        for i in profil:
-            if i.th_lulus == o:
-                x += 1
-        jumlah.append(x)
-    th_lulus = [list(i) for i in zip(th_lulus, jumlah)]
-    context = {"th_lulus": th_lulus}
-    return render(request, "home.html", context)
+    # profil = Profil.objects.using('c0tracerstudy').all()
+    # th_lulus = []
+    # jumlah = []
+    # for i in profil:
+    #     th_lulus.append(i.th_lulus)
+    # th_lulus = list(dict.fromkeys(th_lulus))
+    # th_lulus.sort()
+    # for o in th_lulus:
+    #     x = 0
+    #     for i in profil:
+    #         if i.th_lulus == o:
+    #             x += 1
+    #     jumlah.append(x)
+    # th_lulus = [list(i) for i in zip(th_lulus, jumlah)]
+    # context = {"th_lulus": th_lulus}
+    return render(request, "base.html")
 
 def view_graph1(request,*args, **kwargs):
     f3 = MencariPekerjaan.objects.using('c0tracerstudy').values_list("f3",flat=True)

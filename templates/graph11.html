@@ -1,5 +1,6 @@
+{% extends 'base.html' %}
 {% load static %}
-<html>
+{% block title %}
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,6 +19,8 @@
 	<!--Datatables css-->
 	<link rel="stylesheet" href="{% static 'DataTables-1.10.18/datatables.min.css' %}">
 </head>
+{% endblock %}
+{% block content %}
 <body>
 <script src="{% static 'Highcharts-7.1.2/code/highcharts.js' %}"></script>
 <script src="{% static 'Highcharts-7.1.2/code/modules/data.js' %}"></script>
@@ -83,7 +86,7 @@ Highcharts.chart('container', {
         text: 'Tingkat pendapatan alumni per bulan'
     },
     subtitle: {
-        text: 'Click the columns to view versions. Source: <a href="http://statcounter.com" target="_blank">statcounter.com</a>'
+        text: 'Source: <a href="" target="_blank">Internal Database</a>'
     },
     xAxis: {
         categories: ["< 1.000.000", "1-2 juta","2-3 juta", "3-4 juta","4-5 juta","di atas 5 juta"],
@@ -182,4 +185,4 @@ function fill(filter,urls){
 <!--});-->
 		</script>
 </body>
-</html>
+{% endblock %}

@@ -1,10 +1,11 @@
+{% extends 'base.html' %}
 {% load static %}
-<html>
+{% block title %}
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Jumlah perusahaan yang merespon lamaran</title>
-    <style type="text/css">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Jumlah perusahaan yang merespon lamaran</title>
+	<style type="text/css">
         #container {
             min-width: 310px;
             max-width: 800px;
@@ -18,6 +19,8 @@
 	<!--Datatables css-->
 	<link rel="stylesheet" href="{% static 'DataTables-1.10.18/datatables.min.css' %}">
 </head>
+{% endblock %}
+{% block content %}
 <body>
 <script src="{% static 'Highcharts-7.1.2/code/highcharts.js' %}"></script>
 <script src="{% static 'Highcharts-7.1.2/code/modules/data.js' %}"></script>
@@ -83,7 +86,7 @@ Highcharts.chart('container', {
         text: 'Jumlah perusahaan yang merespon lamaran'
     },
     subtitle: {
-        text: 'Click the columns to view versions. Source: <a href="http://statcounter.com" target="_blank">statcounter.com</a>'
+        text: 'Source: <a href="" target="_blank">Internal Database</a>'
     },
     xAxis: {
         categories: ["1-3 Instansi", "4-6 Instansi","7-10 Instansi", "> 10 Instansi"],
@@ -175,4 +178,4 @@ function fill(filter,urls){
 }
 		</script>
 </body>
-</html>
+{% endblock %}
