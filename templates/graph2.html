@@ -21,7 +21,7 @@
 </head>
 {% endblock %}
 {% block content %}
-
+<body>
 <script src="{% static 'Highstock-7.1.2/code/highstock.js' %}"></script>
 <script src="{% static 'Highstock-7.1.2/code/modules/exporting.js' %}"></script>
 <script src="{% static 'jquery-loading-master/dist/jquery.loading.min.js' %}"></script>
@@ -34,7 +34,49 @@
 		integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
 		crossorigin="anonymous"></script>
 <!--Datatables Js-->
-<script src="{% static 'DataTables-1.10.18/datatables.min.js' %}">
+<script src="{% static 'DataTables-1.10.18/datatables.min.js' %}"></script>
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+</button>
+<!-- Modal Body -->
+<div class="modal fade" id="practiseModal" tabindex="-1" role="dialog"
+	 aria-labelledby="practiseModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-xl" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="practiseModalLabel">
+					Daftar Alumni Yang Menjawab Kategori Tersebut</h5>
+				<button type="button" class="close"
+						data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<table id="table_id" class="display" width="100%">
+					<thead>
+					<tr>
+						<th>Nim</th>
+						<th>Nama</th>
+						<th>Tahun Kelulusan</th>
+						<th>Tempat Lahir</th>
+						<th>Tanggal Lahir</th>
+						<th>Alamat</th>
+					</tr>
+					</thead>
+					<tbody id="content">
+					</tbody>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger"
+						data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+var table = $('#table_id').DataTable();
 Highcharts.chart('container', {
     chart: {
         type: 'bar'
