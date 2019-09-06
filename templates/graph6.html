@@ -107,6 +107,15 @@ Highcharts.chart('container', {
     },
     tooltip: {
         pointFormat: 'Jumlah Alumni Yang Melamar Jenis Perusahaan Ini:<b>{point.y:.1f} </b>'
+    },
+    plotOptions: {
+        series: {
+            borderWidth: 0,
+            dataLabels: {
+                enabled: true,
+                format: '{point.y:f} Alumni'
+            }
+        }
     },               
     series: [
         {

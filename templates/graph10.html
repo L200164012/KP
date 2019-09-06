@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Alasan Menerima Walau Tidak Sesuai</title>
-    <style type="text/css">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Bidang pekerjaan alumni</title>
+	<style type="text/css">
         #container {
             min-width: 310px;
             max-width: 800px;
@@ -13,382 +13,140 @@
             margin: 0 auto
         }
 		</style>
-    </head>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<link rel="stylesheet" href="{% static 'jquery-loading-master/dist/jquery.loading.min.css' %}">
+	<!--Datatables css-->
+	<link rel="stylesheet" href="{% static 'DataTables-1.10.18/datatables.min.css' %}">
+</head>
 {% endblock %}
 {% block content %}
-    <body>
-<!-- Script Highcharts-->
-<script src="{% static 'Highcharts-7.1.2/code/highcharts.js' %}"></script>
-<script src="{% static 'Highcharts-7.1.2/code/modules/exporting.js' %}"></script>
-<script src="{% static 'Highcharts-7.1.2/code/modules/export-data.js' %}"></script>
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<!-- CSS Datatables-->
-<link rel="stylesheet" href="{% static 'DataTables-1.10.18/datatables.min.css' %}">
-<!-- Script Dan CSS Modals -->
+
+<script src="{% static 'Highstock-7.1.2/code/highstock.js' %}"></script>
+<script src="{% static 'Highstock-7.1.2/code/modules/exporting.js' %}"></script>
+<script src="{% static 'jquery-loading-master/dist/jquery.loading.min.js' %}"></script>
 <link rel="stylesheet"
 	  href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
 	  integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
 	  crossorigin="anonymous">
 <script
-		src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-		crossorigin="anonymous"></script>
-<script
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
 		integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-        crossorigin="anonymous"></script>
-<!-- Script Datatables-->
-<script src="{% static 'DataTables-1.10.18/datatables.min.js' %}"></script>
-
-<div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
-
-<!-- modals dan datatables-->
-
-<!-- Modal Trigger Button -->
-<button type="button" class="btn btn-success" data-toggle="modal"
-		data-target="#practiseModal">
-	Semua Peserta
-</button>
-<!-- Modal Body -->
-<div class="modal fade" id="practiseModal" tabindex="-1" role="dialog"
-	 aria-labelledby="practiseModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-xl" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="practiseModalLabel">
-					Peserta dan Jawabannya</h5>
-				<button type="button" class="close"
-						data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">×</span>
-				</button>
-			</div>
-			<div class="modal-body">
-				<table id="table_id" class="display" width="100%">
-					<thead>
-					<tr>
-						<th>Nim</th>
-                        <th>Jawaban</th>
-                        <th>Alasan Lebih Lanjut</th>
-					</tr>
-					</thead>
-					<tbody>
-					{% for i in data %}
-					<tr>
-                        <td>{{ i.nim }}</td>
-                        <td>{% if i.f161 == 1 %}
-                                Pertanyaan tidak sesuai; pekerjaan saya sekarang sudah sesuai dengan pendidikan saya.
-                            {% elif i.f162 == 1 %}
-                                Saya belum mendapatkan pekerjaan yang lebih sesuai.
-                            {% elif i.f163 == 1 %}
-                                Di pekerjaan ini saya memeroleh prospek karir yang baik.
-                            {% elif i.f164 == 1 %}
-                                Saya lebih suka bekerja di area pekerjaan yang tidak ada hubungannya dengan pendidikan saya.
-                            {% elif i.f165 == 1 %}
-                                Saya dipromosikan ke posisi yang kurang berhubungan dengan pendidikan saya dibanding posisi sebelumnya.
-                            {% elif i.f166 == 1 %}
-                                Saya dapat memeroleh pendapatan yang lebih tinggi di pekerjaan ini.
-                            {% elif i.f167 == 1 %}
-                                Pekerjaan saya saat ini lebih aman/terjamin/secure.
-                            {% elif i.f168 == 1 %}
-                                Pekerjaan saya saat ini lebih menarik.
-                            {% elif i.f169 == 1 %}
-                                Pekerjaan saya saat ini lebih memungkinkan saya mengambil pekerjaan tambahan/jadwal yang fleksibel, dll.
-                            {% elif i.f1610 == 1 %}
-                                Pekerjaan saya saat ini lokasinya lebih dekat dari rumah saya.
-                            {% elif i.f1611 == 1 %}
-                                Pekerjaan saya saat ini dapat lebih menjamin kebutuhan keluarga saya.
-                            {% elif i.f1612 == 1 %}
-                                Pada awal meniti karir ini, saya harus menerima pekerjaan yang tidak berhubungan dengan pendidikan saya.
-                            {% elif i.f1613 == 1 %}
-                                Lainnya
-                            {% else %}
-                                Tidak Menjawab
-                            {% endif %}</td>
-                            <td>{% if i.f1614 != ' ' %}
-                                    {{i.f1614}}
-                                {% else %}
-                                    Tidak Ada
-                                {% endif %}
-                            </td>
-					</tr>
-					{% endfor %}
-					</tbody>
-				</table>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-danger"
-						data-dismiss="modal">Close</button>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- Untuk Chart -->
-<script type="text/javascript">
-// Build the chart
+		crossorigin="anonymous"></script>
+<!--Datatables Js-->
+<script src="{% static 'DataTables-1.10.18/datatables.min.js' %}">
 Highcharts.chart('container', {
     chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
-        plotShadow: false,
-        type: 'pie'
+        type: 'bar'
     },
     title: {
-        text: 'Alasan Menerima Walau Tidak Sesuai'
+        text: 'Bidang pekerjaan alumni'
+    },
+    subtitle: {
+        text: 'Source: <a href="" target="_blank">Internal Database</a>'
+    },
+    xAxis: {
+        categories: [
+            "Pertanyaan tidak sesuai, pekerjaan saya sekarang sudah sesuai dengan pendidikan saya.",
+            "Saya belum mendapatkan pekerjaan yang lebih sesuai.",
+            "Di pekerjaan ini saya memeroleh prospek karir yang baik.",
+            "Saya lebih suka bekerja di area pekerjaan yang tidak ada hubungannya dengan pendidikan saya.",
+            "Saya dipromosikan ke posisi yang kurang berhubungan dengan pendidikan saya dibanding posisi sebelumnya.",
+            "Saya dapat memeroleh pendapatan yang lebih tinggi di pekerjaan ini.",
+            "Pekerjaan saya saat ini lebih aman/terjamin/secure.",
+            "Pekerjaan saya saat ini lebih menarik.",
+            "Pekerjaan saya saat ini lebih memungkinkan saya mengambil pekerjaan tambahan/jadwal yang fleksibel, dll.",
+            "Pekerjaan saya saat ini lokasinya lebih dekat dari rumah saya.",
+            "Pekerjaan saya saat ini dapat lebih menjamin kebutuhan keluarga saya.",
+            "Pada awal meniti karir ini, saya harus menerima pekerjaan yang tidak berhubungan dengan pendidikan saya".
+            "Lainnya"
+        ],
+        title: {
+            text: null
+        },
+        max:4,
+        scrollbar: {
+            enabled: true
+        },
+    },
+    yAxis: {
+        title: {
+            text: 'Jumlah Alumni'
+        },
+        labels: {
+            overflow: 'justify'
+        }
     },
     tooltip: {
-        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        valueSuffix: ' Alumni'
     },
     plotOptions: {
-        pie: {
-            allowPointSelect: true,
-            cursor: 'pointer',
+        bar: {
             dataLabels: {
-                enabled: false
-            },
-            showInLegend: true
+                enabled: true,
+                format: '{point.y:f} Alumni'
+            }
         }
     },
-    series: [{
-        name: 'Alasan',
-        colorByPoint: true,
-        cursor: 'pointer',
-        data: [{
-            name:   'Pertanyaan tidak sesuai; pekerjaan saya sekarang sudah sesuai dengan pendidikan saya.',
-            y:  {{ A }},
-            sliced: false,
-            selected: false,
-            events: {
-                click:function() {
-                    $(document).ready(function (){
-                        var table = $('#table_id').DataTable({
-                            destroy:true,
-                            search: {
-                                search: 'Pertanyaan tidak sesuai; pekerjaan saya sekarang sudah sesuai dengan pendidikan saya.'
-                            },
-                        });
-                    });
-                    $('#practiseModal').modal('show');
-                }
-            }
-        }, {
-            name:   'Saya belum mendapatkan pekerjaan yang lebih sesuai.',
-            y:  {{ B }},
-            events: {
-                click:function() {
-                    $(document).ready(function (){
-                        var table = $('#table_id').DataTable({
-                            destroy:true,
-                            search: {
-                                search: 'Saya belum mendapatkan pekerjaan yang lebih sesuai.'
-                            },
-                        });
-                    });
-                    $('#practiseModal').modal('show');
-                }
-            }
-        }, {
-            name:   'Di pekerjaan ini saya memeroleh prospek karir yang baik.',
-            y:  {{ C }},
-            events: {
-                click:function() {
-                    $(document).ready(function (){
-                        var table = $('#table_id').DataTable({
-                            destroy:true,
-                            search: {
-                                search: 'Di pekerjaan ini saya memeroleh prospek karir yang baik.'
-                            },
-                        });
-                    });
-                    $('#practiseModal').modal('show');
-                }
-            }
-        }, {
-            name:   'Saya lebih suka bekerja di area pekerjaan yang tidak ada hubungannya dengan pendidikan saya.',
-            y:  {{ D }},
-            events: {
-                click:function() {
-                    $(document).ready(function (){
-                        var table = $('#table_id').DataTable({
-                            destroy:true,
-                            search: {
-                                search: 'Saya lebih suka bekerja di area pekerjaan yang tidak ada hubungannya dengan pendidikan saya.'
-                            },
-                        });
-                    });
-                    $('#practiseModal').modal('show');
-                }
-            }
-        }, {
-            name:   'Saya dipromosikan ke posisi yang kurang berhubungan dengan pendidikan saya dibanding posisi sebelumnya.',
-            y:  {{ E }},
-            events: {
-                click:function() {
-                    $(document).ready(function (){
-                        var table = $('#table_id').DataTable({
-                            destroy:true,
-                            search: {
-                                search: 'Saya dipromosikan ke posisi yang kurang berhubungan dengan pendidikan saya dibanding posisi sebelumnya.'
-                            },
-                        });
-                    });
-                    $('#practiseModal').modal('show');
-                }
-            }
-        }, {
-            name:   'Saya dapat memeroleh pendapatan yang lebih tinggi di pekerjaan ini.',
-            y:  {{ F }},
-            events: {
-                click:function() {
-                    $(document).ready(function (){
-                        var table = $('#table_id').DataTable({
-                            destroy:true,
-                            search: {
-                                search: 'Saya dapat memeroleh pendapatan yang lebih tinggi di pekerjaan ini.'
-                            },
-                        });
-                    });
-                    $('#practiseModal').modal('show');
-                }
-            }
-        }, {
-            name:   'Pekerjaan saya saat ini lebih aman/terjamin/secure.',
-            y:  {{ G }},
-            events: {
-                click:function() {
-                    $(document).ready(function (){
-                        var table = $('#table_id').DataTable({
-                            destroy:true,
-                            search: {
-                                search: 'Pekerjaan saya saat ini lebih aman/terjamin/secure.'
-                            },
-                        });
-                    });
-                    $('#practiseModal').modal('show');
-                }
-            }
-        }, {
-            name:   'Pekerjaan saya saat ini lebih menarik.',
-            y:  {{ H }},
-            events: {
-                click:function() {
-                    $(document).ready(function (){
-                        var table = $('#table_id').DataTable({
-                            destroy:true,
-                            search: {
-                                search: 'Pekerjaan saya saat ini lebih menarik.'
-                            },
-                        });
-                    });
-                    $('#practiseModal').modal('show');
-                }
-            }
-        }, {
-            name:   'Pekerjaan saya saat ini lebih memungkinkan saya mengambil pekerjaan tambahan/jadwal yang fleksibel, dll.',
-            y:  {{ I }},
-            events: {
-                click:function() {
-                    $(document).ready(function (){
-                        var table = $('#table_id').DataTable({
-                            destroy:true,
-                            search: {
-                                search: 'Pekerjaan saya saat ini lebih memungkinkan saya mengambil pekerjaan tambahan/jadwal yang fleksibel, dll.'
-                            },
-                        });
-                    });
-                    $('#practiseModal').modal('show');
-                }
-            }
-        }, {
-            name:   'Pekerjaan saya saat ini lokasinya lebih dekat dari rumah saya.',
-            y:  {{ J }},
-            events: {
-                click:function() {
-                    $(document).ready(function (){
-                        var table = $('#table_id').DataTable({
-                            destroy:true,
-                            search: {
-                                search: 'Pekerjaan saya saat ini lokasinya lebih dekat dari rumah saya.'
-                            },
-                        });
-                    });
-                    $('#practiseModal').modal('show');
-                }
-            }
-        }, {
-            name:   'Pekerjaan saya saat ini dapat lebih menjamin kebutuhan keluarga saya.',
-            y:  {{ K }},
-            events: {
-                click:function() {
-                    $(document).ready(function (){
-                        var table = $('#table_id').DataTable({
-                            destroy:true,
-                            search: {
-                                search: 'Pekerjaan saya saat ini dapat lebih menjamin kebutuhan keluarga saya.'
-                            },
-                        });
-                    });
-                    $('#practiseModal').modal('show');
-                }
-            }
-        }, {
-            name:   'Pada awal meniti karir ini, saya harus menerima pekerjaan yang tidak berhubungan dengan pendidikan saya.',
-            y:  {{ L }},
-            events: {
-                click:function() {
-                    $(document).ready(function (){
-                        var table = $('#table_id').DataTable({
-                            destroy:true,
-                            search: {
-                                search: 'Pada awal meniti karir ini, saya harus menerima pekerjaan yang tidak berhubungan dengan pendidikan saya.'
-                            },
-                        });
-                    });
-                    $('#practiseModal').modal('show');
-                }
-            }
-        }, {
-            name:   'Lainnya.',
-            y:  {{ M }},
-            events: {
-                click:function() {
-                    $(document).ready(function (){
-                        var table = $('#table_id').DataTable({
-                            destroy:true,
-                            search: {
-                                search: 'Lainnya.'
-                            },
-                        });
-                    });
-                    $('#practiseModal').modal('show');
-                }
-            }
-        }, {
-            name:   'Tidak Menjawab.',
-            y:  {{ N }},
-            events: {
-                click:function() {
-                    $(document).ready(function (){
-                        var table = $('#table_id').DataTable({
-                            destroy:true,
-                            search: {
-                                search: 'Tidak Menjawab.'
-                            },
-                        });
-                    });
-                    $('#practiseModal').modal('show');
-                }
-            }
-        }
+    series: [
+    {
+        name: 'Jumlah Alumni',
+		cursor: 'pointer',
+        data: [
+			{% for i in data %}
+				{
+					y: {{ i.0 }},
+					events: {
+					click: function() {
+	    					table.destroy();
+                            $("#content").html("");
+                            urls = "{% url 'fill' i.1 2 %}";
+                            fill({{ i.1 }},urls);
+						}
+					}
+				},
+				{% endfor %}
         ]
-    }]
+    }
+    ]
 });
-//Script Pemanggil DataTable
-$(document).ready(function (){
-    var table = $('#table_id').DataTable({
-        destroy:true,
-        search:false,
+function fill(filter,urls){
+	$('#container').loading();
+    $.ajax({
+    url: urls,
+    type: 'POST',
+    dataType: 'JSON',
+    data: {
+        'csrfmiddlewaretoken': '{{ csrf_token }}',
+        'filter': filter,
+     }
+    })
+    .done(function(response){
+    $.each(response, function(key, value){
+        var tr = document.createElement("TR");
+        tr.setAttribute("id",value.nim);
+        document.getElementById("content").appendChild(tr);
+        var list = [
+                value.nim,
+                value.nama,
+                value.th_lulus,
+                value.tmp_lhr,
+                value.tgl_lhr,
+                value.alamat
+            ];
+        var x;
+        for (x of list){
+            var td = document.createElement("TD");
+            var text = document.createTextNode(x);
+            td.appendChild(text);
+            document.getElementById(value.nim).appendChild(td);
+        }
     });
-});
-        </script>
-	</body>
+    table = $('#table_id').DataTable();
+    $('#container').loading('stop');
+    $('#practiseModal').modal('show');
+    });
+}
+</script>
+</body>
 {% endblock %}

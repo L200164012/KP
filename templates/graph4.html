@@ -105,6 +105,15 @@
             tooltip: {
                 pointFormat: 'Jumlah Alumni Yang Melamar:<b>{point.y:.1f} </b>'
             },
+            plotOptions: {
+                series: {
+                    borderWidth: 0,
+                    dataLabels: {
+                        enabled: true,
+                        format: '{point.y:f} Alumni'
+                    }
+                }
+            },
             series: [
         {
             name: "Jumlah Alumni",
