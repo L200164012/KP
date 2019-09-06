@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Jenis Perusahaan Tempat Mahasiswa Bekerja</title>
-    <style type="text/css">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Bidang pekerjaan alumni</title>
+	<style type="text/css">
         #container {
             min-width: 310px;
             max-width: 800px;
@@ -13,242 +13,161 @@
             margin: 0 auto
         }
 		</style>
-    </head>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<link rel="stylesheet" href="{% static 'jquery-loading-master/dist/jquery.loading.min.css' %}">
+	<!--Datatables css-->
+	<link rel="stylesheet" href="{% static 'DataTables-1.10.18/datatables.min.css' %}">
+</head>
 {% endblock %}
 {% block content %}
-    <body>
-             <!-- Script Highcharts-->
-        <script src="{% static 'Highcharts-7.1.2/code/highcharts.js' %}"></script>
-        <script src="{% static 'Highcharts-7.1.2/code/modules/exporting.js' %}"></script>
-        <script src="{% static 'Highcharts-7.1.2/code/modules/export-data.js' %}"></script>
-        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-        <!-- CSS Datatables-->
-        <link rel="stylesheet" href="{% static 'DataTables-1.10.18/datatables.min.css' %}">
-        <!-- Script Dan CSS Modals -->
-        <link rel="stylesheet"
-              href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-              integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-              crossorigin="anonymous">
-        <script
-                src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-                crossorigin="anonymous"></script>
-        <script
-                src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
-                integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-                crossorigin="anonymous"></script>
-        <!-- Script Datatables-->
-        <script src="{% static 'DataTables-1.10.18/datatables.min.js' %}"></script>
-        
-        <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
-        
-        <!-- modals dan datatables-->
-        
-        <!-- Modal Trigger Button -->
-        <button type="button" class="btn btn-success" data-toggle="modal"
-                data-target="#practiseModal">
-            Semua Peserta
-        </button>
-        <!-- Modal Body -->
-        <div class="modal fade" id="practiseModal" tabindex="-1" role="dialog"
-             aria-labelledby="practiseModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-xl" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="practiseModalLabel">
-                            Peserta dan Jawabannya</h5>
-                        <button type="button" class="close"
-                                data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <table id="table_id" class="display" width="100%">
-                            <thead>
-                            <tr>
-                                <th>Nim</th>
-                                <th>Jawaban</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {% for i in data %}
-                            <tr>
-                                <td>{{ i.nim }}</td>
-                                <td>{% if i.f111 == 1 %}
-                                        Instansi pemerintah (termasuk BUMN).
-                                    {% elif i.f111 == 2 %}
-                                        Organisasi non-profit/Lembaga Swadaya Masyarakat.
-                                    {% elif i.f111 == 3 %}
-                                        Perusahaan swasta.
-                                    {% elif i.f111 == 4 %}
-                                        Wiraswasta/perusahaan sendiri.
-                                    {% elif i.f111 == 5 %}
-                                        Lainnya.
-                                    {% else %}
-                                        Tidak Menjawab.
-                                    {% endif %}
-                            </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-            <!-- Script Chart-->
-            <div id="container" style="min-width: 300px; height: 400px; margin: 0 auto"></div>    
-            <script type="text/javascript">
-                Highcharts.chart('container', {
-                    chart: {
-                        type: 'column'
-                    },
-                    title: {
-                        text: 'Jenis Perusahaan Tempat Mahasiswa Bekerja'
-                    },
-                    subtitle: {
-                        text: 'Source: Database Internal'
-                    },
-                    xAxis: {
-                        type: 'category',
-                        labels: {
-                            rotation: -45,
-                            style: {
-                                fontSize: '13px',
-                                fontFamily: 'Verdana, sans-serif'
-                            }
+<body>
+<script src="{% static 'Highstock-7.1.2/code/highstock.js' %}"></script>
+<script src="{% static 'Highstock-7.1.2/code/modules/exporting.js' %}"></script>
+<script src="{% static 'jquery-loading-master/dist/jquery.loading.min.js' %}"></script>
+<link rel="stylesheet"
+	  href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+	  integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+	  crossorigin="anonymous">
+<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+		integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+		crossorigin="anonymous"></script>
+<!--Datatables Js-->
+<script src="{% static 'DataTables-1.10.18/datatables.min.js' %}"></script>
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+<div class="modal fade" id="practiseModal" tabindex="-1" role="dialog"
+aria-labelledby="practiseModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="practiseModalLabel">
+                Title of the Modal</h5>
+            <button type="button" class="close"
+                    data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <table id="table_id" class="display" width="100%">
+                <thead>
+                <tr>
+                    <th>Nim</th>
+                    <th>Nama</th>
+                    <th>Tahun Kelulusan</th>
+                    <th>Tempat Lahir</th>
+                    <th>Tanggal Lahir</th>
+                    <th>Alamat</th>
+                </tr>
+                </thead>
+                <tbody id="content">
+                </tbody>
+            </table>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger"
+                    data-dismiss="modal">Close</button>
+        </div>
+    </div>
+</div>
+</div>
+<!-- Script Chart-->
+<div id="container" style="min-width: 300px; height: 400px; margin: 0 auto"></div>    
+<script type="text/javascript">
+var table = $('#table_id').DataTable();
+Highcharts.chart('container', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Jenis Perusahaan Tempat Mahasiswa Bekerja'
+    },
+    subtitle: {
+        text: 'Source: Database Internal'
+    },
+    xAxis: {
+        categories: [
+            "Instansi Pemerintah (Termasuk BUMN)",
+            "Organisasi Non Profit/ Lembaga Swadaya Masyarakat",
+            "Perusahaan Swasta",
+            "Wiraswasta / Perusahaan Sendiri",
+            "Lainya"
+        ],
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Alumni'
+        }
+    },
+    legend: {
+        enabled: false
+    },
+    tooltip: {
+        pointFormat: 'Jumlah Alumni Yang Melamar Jenis Perusahaan Ini:<b>{point.y:.1f} </b>'
+    },               
+    series: [
+        {
+            name: "Jumlah Alumni",
+            colorByPoint: true,
+            cursor: 'pointer',
+            data: [
+                {% for i in data %}
+                {
+                    y: {{ i.0 }},
+                    events: {
+                    click: function() {
+                            table.destroy();
+                            $("#content").html("");
+                            urls = "{% url 'fill' i.1 5 %}";
+                            fill({{ i.1 }},urls);
                         }
-                    },
-                    yAxis: {
-                        min: 0,
-                        title: {
-                            text: 'Mahasiswa'
-                        }
-                    },
-                    legend: {
-                        enabled: false
-                    },
-                    tooltip: {
-                        pointFormat: 'Jumlah Mahasiswa Yang Melamar Jenis Perusahaan Ini:<b>{point.y:.1f} </b>'
-                    },
-                    series: [{
-                        name: 'Population',
-                        data: [
-                            {   name:   "Instansi pemerintah (termasuk BUMN).", 
-                                y:  {{ A }},
-                                events: {
-                                    click:function() {
-                                        $(document).ready(function (){
-                                            var table = $('#table_id').DataTable({
-                                            destroy:true,
-                                            search: {
-                                                search: 'Instansi pemerintah (termasuk BUMN).'
-                                                },
-                                            });
-                                        });
-                                        $('#practiseModal').modal('show');
-                                    }
-                                }
-                            },
-                            {   name:   "Organisasi non-profit/Lembaga Swadaya Masyarakat.",
-                                y:  {{ B }},
-                                events: {
-                                    click:function() {
-                                        $(document).ready(function (){
-                                            var table = $('#table_id').DataTable({
-                                            destroy:true,
-                                            search: {
-                                                search: 'Organisasi non-profit/Lembaga Swadaya Masyarakat.'
-                                                },
-                                            });
-                                        });
-                                        $('#practiseModal').modal('show');
-                                    }
-                                }
-                            },
-                            {
-                                name:   "Perusahaan swasta.", 
-                                y:  {{ C }},
-                                events: {
-                                    click:function() {
-                                        $(document).ready(function (){
-                                            var table = $('#table_id').DataTable({
-                                            destroy:true,
-                                            search: {
-                                                search: 'Perusahaan swasta.'
-                                                },
-                                            });
-                                        });
-                                        $('#practiseModal').modal('show');
-                                    }
-                                }
-                            },
-                            {
-                                name:   "Wiraswasta/perusahaan sendiri.", 
-                                y:  {{ D }},
-                                events: {
-                                    click:function() {
-                                        $(document).ready(function (){
-                                            var table = $('#table_id').DataTable({
-                                            destroy:true,
-                                            search: {
-                                                search: 'Wiraswasta/perusahaan sendiri.'
-                                                },
-                                            });
-                                        });
-                                        $('#practiseModal').modal('show');
-                                    }
-                                }
-                            },
-                            {
-                                name:   "Lainnya.", 
-                                y: {{ E }},
-                                events: {
-                                    click:function() {
-                                        $(document).ready(function (){
-                                            var table = $('#table_id').DataTable({
-                                            destroy:true,
-                                            search: {
-                                                search: 'Lainnya.'
-                                                },
-                                            });
-                                        });
-                                        $('#practiseModal').modal('show');
-                                    }
-                                }
-                            },
-                            {   name:   "Tidak Menjawab.", 
-                                y: {{ F }},
-                                events: {
-                                    click:function() {
-                                        $(document).ready(function (){
-                                            var table = $('#table_id').DataTable({
-                                            destroy:true,
-                                            search: {
-                                                search: 'Tidak Menjawab.'
-                                                },
-                                            });
-                                        });
-                                        $('#practiseModal').modal('show');
-                                    }
-                                }
-                            }
-                        ],
-                        dataLabels: {
-                            enabled: true,
-                            rotation: -90,
-                            color: '#FFFFFF',
-                            align: 'right',
-                            format: '{point.y:.1f}', // one decimal
-                            y: 10, // 10 pixels down from the top
-                            style: {
-                                fontSize: '13px',
-                                fontFamily: 'Verdana, sans-serif'
-                            }
-                        }
-                    }]
-                });
-                $('#table_id').DataTable({
-                    destroy:true,
-                    search:false,
-                    });
-                        </script>
-                    </body>
+                    }
+                },
+                {% endfor %}
+            ]
+        }
+    ]
+});
+function fill(filter,urls){
+	$('#container').loading();
+    $.ajax({
+    url: urls,
+    type: 'POST',
+    dataType: 'JSON',
+    data: {
+        'csrfmiddlewaretoken': '{{ csrf_token }}',
+        'filter': filter,
+     }
+    })
+    .done(function(response){
+    $.each(response, function(key, value){
+        var tr = document.createElement("TR");
+        tr.setAttribute("id",value.nim);
+        document.getElementById("content").appendChild(tr);
+        var list = [
+                value.nim,
+                value.nama,
+                value.th_lulus,
+                value.tmp_lhr,
+                value.tgl_lhr,
+                value.alamat
+            ];
+        var x;
+        for (x of list){
+            var td = document.createElement("TD");
+            var text = document.createTextNode(x);
+            td.appendChild(text);
+            document.getElementById(value.nim).appendChild(td);
+        }
+    });
+    table = $('#table_id').DataTable();
+    $('#container').loading('stop');
+    $('#practiseModal').modal('show');
+    });
+}
+		</script>
+</body>
 {% endblock %}
-                

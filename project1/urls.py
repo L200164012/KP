@@ -21,6 +21,7 @@ import c0tracerstudy.views as view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', view.home_view , name='home'),
+    path('home', view.home_view, name='home1'),
     path('graph1', view.view_graph1, name='graph1'),
     path('graph2', view.view_graph2, name='graph2'),
     path('graph3', view.view_graph3, name='graph3'),
