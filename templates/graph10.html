@@ -4,7 +4,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Bidang pekerjaan alumni</title>
+	<title>Alasan menerima walau tidak sesuai</title>
 	<style type="text/css">
         #container {
             min-width: 310px;
@@ -38,6 +38,7 @@
 
 <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
+
 </button>
 <!-- Modal Body -->
 <div class="modal fade" id="practiseModal" tabindex="-1" role="dialog"
@@ -46,7 +47,7 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="practiseModalLabel">
-					Daftar Alumni Yang Menjawa Kategori Tersebut</h5>
+					Daftar Alumni Yang Menjawab Kategori Tersebut</h5>
 				<button type="button" class="close"
 						data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">×</span>
@@ -75,13 +76,15 @@
 		</div>
 	</div>
 </div>
-<script src="{% static 'DataTables-1.10.18/datatables.min.js' %}">
+<script type="text/javascript">
+var table = $('#table_id').DataTable();
+
 Highcharts.chart('container', {
     chart: {
         type: 'bar'
     },
     title: {
-        text: 'Bidang pekerjaan alumni'
+        text: 'Alasan menerima walau tidak sesuai'
     },
     subtitle: {
         text: 'Source: <a href="" target="_blank">Internal Database</a>'
@@ -99,7 +102,7 @@ Highcharts.chart('container', {
             "Pekerjaan saya saat ini lebih memungkinkan saya mengambil pekerjaan tambahan/jadwal yang fleksibel, dll.",
             "Pekerjaan saya saat ini lokasinya lebih dekat dari rumah saya.",
             "Pekerjaan saya saat ini dapat lebih menjamin kebutuhan keluarga saya.",
-            "Pada awal meniti karir ini, saya harus menerima pekerjaan yang tidak berhubungan dengan pendidikan saya".
+            "Pada awal meniti karir ini, saya harus menerima pekerjaan yang tidak berhubungan dengan pendidikan saya.",
             "Lainnya"
         ],
         title: {
@@ -141,8 +144,8 @@ Highcharts.chart('container', {
 					click: function() {
 	    					table.destroy();
                             $("#content").html("");
-                            urls = "{% url 'fill' i.1 2 %}";
-                            fill({{ i.1 }},urls);
+                            urls = "{% url 'fill' i.1 10 %}";
+                            fill("{{ i.1 }}",urls);
 						}
 					}
 				},

@@ -4,7 +4,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Bidang pekerjaan alumni</title>
+	<title>Cara alumni mencari pekerjaan</title>
 	<style type="text/css">
         #container {
             min-width: 310px;
@@ -82,7 +82,7 @@ Highcharts.chart('container', {
         type: 'bar'
     },
     title: {
-        text: 'Bidang pekerjaan alumni'
+        text: 'Cara alumni mencari pekerjaan'
     },
     subtitle: {
         text: 'Source: <a href="" target="_blank">Internal Database</a>'
@@ -145,7 +145,7 @@ Highcharts.chart('container', {
 	    					table.destroy();
                             $("#content").html("");
                             urls = "{% url 'fill' i.1 2 %}";
-                            fill({{ i.1 }},urls);
+                            fill("{{ i.1 }}",urls);
 						}
 					}
 				},
